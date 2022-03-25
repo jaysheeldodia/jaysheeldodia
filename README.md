@@ -1,5 +1,5 @@
-<h1 align="center">Hi 👋, I'm Jaysheel Dodia</h1>
-<h3 align="center">A passionate web developer and a learner.</h3>
+<h1 align="center">Hi I'm Jaysheel Dodia</h1>
+<h3 align="center">A passionate web developer and a constant learner!</h3>
 
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=jaysheel-ops&label=Profile%20views&color=0e75b6&style=flat" alt="jaysheel-ops" /> </p>
 

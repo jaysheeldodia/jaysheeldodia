@@ -5,7 +5,7 @@
 <br />
 
 - 💻 Actively looking for Software Development Engineer roles
-- 🌱 I work with **React**
+- 🌱 I work with **React** and **NodeJS**
 - 👨‍💻 All of my projects are available at [https://github.com/jaysheel-ops](https://github.com/jaysheel-ops)
 - 💬 Ask me about **React, Open Source, Content Writing and Community building**
 - 📫 How to reach me **jgdodia09@gmail.com**

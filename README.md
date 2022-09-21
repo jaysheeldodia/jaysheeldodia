@@ -5,9 +5,9 @@
 <br />
 
 - 💻 Actively looking for Software Development Engineer roles
-- 🌱 I work with **React** and **NodeJS**
+- 🌱 I work with **React**, **NodeJS** and **MERN Stack Apps**
 - 👨‍💻 All of my projects are available at [https://github.com/jaysheel-ops](https://github.com/jaysheel-ops)
-- 💬 Ask me about **React, Open Source, Content Writing and Community building**
+- 💬 Ask me about **React, Scripting, Computer Literacy, Open Source and Content Writing**
 - 📫 How to reach me **jgdodia09@gmail.com**
 - ⚡ Fun fact **Loves sports. Lets talk about football and basketball!**
 

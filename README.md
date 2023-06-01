@@ -4,11 +4,11 @@
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=jaysheel-ops" alt="jaysheel-ops" /> </p>
 <br />
 
-- 💻 Actively looking for Software Development Engineer roles
-- 🌱 I work on **MERN Stack Apps**
+- 💻 **AI/ML Intern**
+- 🌱 I work on **MERN Stack Apps** prior to **AI/ML**.
 - 👨‍💻 All of my projects are available at [https://github.com/jaysheel-ops](https://github.com/jaysheel-ops)
-- 💬 Ask me about **React, Scripting, Computer Literacy, Open Source and Content Writing**
-- 📫 How to reach me **jgdodia09@gmail.com**
+- 💬 Ask me about **AI/ML, Deep Learning, Scripting, Open Source or Engineering overall**
+- 📫 How to reach me: **jgdodia09@gmail.com**
 - ⚡ Fun fact **Loves sports. Lets talk about football and basketball!**
 
 <br/>

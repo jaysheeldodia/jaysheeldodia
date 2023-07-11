@@ -5,7 +5,7 @@
 <br />
 
 - 💻 **AI/ML Intern**
-- 🌱 I work on **MERN Stack Apps** prior to **AI/ML**.
+- 🌱 I worked on **MERN Stack Apps** prior to **AI/ML**.
 - 👨‍💻 All of my projects are available at [https://github.com/jaysheel-ops](https://github.com/jaysheel-ops)
 - 💬 Ask me about **AI/ML, Deep Learning, Scripting, Open Source or Engineering overall**
 - 📫 How to reach me: **jgdodia09@gmail.com**

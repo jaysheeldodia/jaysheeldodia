@@ -4,11 +4,10 @@
 <p align="left"> <img src="https://komarev.com/ghpvc/?username=jaysheeldodia" alt="jaysheeldodia" /> </p>
 <br />
 
-- 💻 **AI/ML Intern**
-- 🌱 I worked on **MERN Stack Apps** prior to **AI/ML**.
+- 💻 **Graduate Computer Science Student**
+- 🌱 Studying AI/ML with previous experience in **MERN Stack Apps**
 - 👨‍💻 All of my projects are available at [https://github.com/jaysheeldodia](https://github.com/jaysheeldodia)
-- 💬 Ask me about **AI/ML, Deep Learning, Scripting, Open Source or Engineering overall**
-- 📫 How to reach me: **jgdodia09@gmail.com**
+- 💬 Ask me about **GenAI, Machine Learning, Deep Learning, Scripting, Open Source or Engineering overall**
 - ⚡ Fun fact **Loves sports. Lets talk about football and basketball!**
 
 <br/>

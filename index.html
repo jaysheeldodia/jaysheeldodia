@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio - MS Computer Science Student</title>
+    <style>
+        :root {
+            --primary-dark: #2c3e50;
+            --primary-medium: #34495e;
+            --accent-blue: #3498db;
+            --accent-light: #74b9ff;
+            --text-dark: #2d3436;
+            --text-medium: #636e72;
+            --text-light: #b2bec3;
+            --background-light: #ffffff;
+            --background-subtle: #f8f9fa;
+            --background-card: #fdfdfd;
+            --border-light: #e9ecef;
+            --shadow-light: rgba(0, 0, 0, 0.1);
+            --shadow-medium: rgba(0, 0, 0, 0.15);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, var(--background-light), var(--background-subtle));
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        body.dark-mode {
+            --primary-dark: #f5f6fa;
+            --primary-medium: #dcdde1;
+            --accent-blue: #74b9ff;
+            --accent-light: #0984e3;
+            --text-dark: #f5f6fa;
+            --text-medium: #dcdde1;
+            --text-light: #7f8fa6;
+            --background-light: #1e272e;
+            --background-subtle: #2f3640;
+            --background-card: #353b48;
+            --border-light: #485460;
+            --shadow-light: rgba(255, 255, 255, 0.05);
+            --shadow-medium: rgba(255, 255, 255, 0.1);
+        }
+
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px var(--shadow-light);
+            border-bottom: 1px solid var(--border-light);
+        }
+
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+            padding: 0.5rem 1rem;
+        }
+
+        nav a:hover {
+            color: var(--accent-blue);
+            font-weight: 600; /* bold happens instantly */
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent-blue);
+            transition: width 0.3s ease; /* underline animates separately */
+            transform: translateX(-50%);
+        }
+
+       nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, var(--primary-dark), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-light));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        /* Section Styling */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: var(--text-dark);
+            position: relative;
+            font-weight: 600;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--accent-blue);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            color: var(--text-medium);
+            line-height: 1.8;
+        }
+
+        .about-highlights {
+            background: var(--background-card);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            border: 1px solid var(--border-light);
+        }
+
+        .highlight-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            padding: 0.5rem 0;
+            color: var(--text-medium);
+            font-weight: 500;
+        }
+
+        .highlight-icon {
+            width: 20px;
+            height: 20px;
+            background: var(--accent-blue);
+            border-radius: 50%;
+            margin-right: 1rem;
+        }
+
+        /* Education & Experience */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            height: 100%;
+            width: 2px;
+            background: var(--accent-blue);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            justify-content: flex-end;
+        }
+
+        .timeline-content {
+            background: var(--background-card);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 45%;
+            position: relative;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .timeline-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-medium);
+        }
+
+        .timeline-date {
+            color: var(--accent-blue);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .timeline-subtitle {
+            color: var(--text-medium);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        /* Skills Section */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: var(--background-card);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px var(--shadow-medium);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+            text-align: center;
+            font-weight: 600;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .skill-tag {
+            background: var(--accent-blue);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-dark);
+            transform: scale(1.05);
+        }
+
+        /* Dark mode hover fix */
+        .dark-mode .skill-tag:hover {
+            background: var(--accent-dark); /* A dark color that contrasts white text */
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--background-card);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px var(--shadow-light);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 1px solid var(--border-light);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px var(--shadow-medium);
+        }
+
+        .project-image {
+            height: 200px;
+            background: linear-gradient(45deg, var(--accent-blue), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .project-content {
+            padding: 2rem;
+        }
+
+        .project-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            font-weight: 600;
+        }
+
+        .project-description {
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .project-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-tag {
+            background: var(--background-subtle);
+            color: var(--text-medium);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid var(--border-light);
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-link {
+            color: var(--accent-blue);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Contact Section */
+        .contact-content {
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .contact-link {
+            display: flex;
+            align-items: center;
+            padding: 1rem 2rem;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-light));
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .contact-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(52, 152, 219, 0.4);
+        }
+
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: var(--background-card);
+            padding: 3rem;
+            border-radius: 20px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px var(--shadow-medium);
+            border: 1px solid var(--border-light);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            color: var(--text-medium);
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .modal-close:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                justify-content: flex-start !important;
+                padding-left: 50px;
+            }
+
+            .timeline-content {
+                width: 100%;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+
+            .contact-links {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#" id="darkModeToggle">🌓</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Jaysheel Dodia</h1>
+            <p>Specializing in Generative AI, Data Science, and Software Engineering to build cool stuff and I also love football</p>
+            <a href="#about" class="cta-button">Explore My Journey</a>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="about-highlights">
+                <div class="highlight-item">
+                    <!-- <div class="highlight-icon"></div> -->
+                    <span>🎓 Pursuing MS in CS</span>
+                </div>
+                <div class="highlight-item">
+                    <!-- <div class="highlight-icon"></div> -->
+                    <span>🤖 Developing Gen AI</span>
+                </div>
+                <div class="highlight-item">
+                    <!-- <div class="highlight-icon"></div> -->
+                    <span>📊 Analyzing Data & Pipelining</span>
+                </div>
+                <div class="highlight-item">
+                    <!-- <div class="highlight-icon"></div> -->
+                    <span>💻 Engineering Software</span>
+                </div>
+                <div class="highlight-item">
+                    <!-- <div class="highlight-icon"></div> -->
+                    <span>⚽ Playing Football</span>
+                </div>
+            </div>
+            <div class="about-text">
+                <p>I'm a dedicated Computer Science graduate student with a strong foundation in Data Structures, Mathematics and Statistics. Currently pursuing my Master's degree, I'm deeply passionate about the development of artificial intelligence, automating tasks and improving efficiency.</p>
+                
+                <p>My journey in technology is driven by a fascination with Generative AI and its transformative potential across industries. I combine this with strong data science skills to extract meaningful insights and create intelligent systems that solve real-world problems.</p>
+                
+                <p>With experience in software development and a continuous learning mindset, I'm committed to building innovative solutions while maintaining high standards of code quality and system design. When I'm not coding, you'll find me on the football field, where I apply the same strategic thinking and teamwork that drives my technical work.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2024 - Present</div>
+                    <div class="timeline-title">Master of Science in Computer Science</div>
+                    <div class="timeline-subtitle">New Jersey Institute of Technology</div>
+                    <p>Focusing on Data Structures & Algorithms, Machine Learning, Artificial Intelligence, and Software Engineering. Actively engaged in project management involving Generative AI and Data Science applications.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">2020 - 2024</div>
+                    <div class="timeline-title">Bachelor of Engineering in Computer Engineering</div>
+                    <div class="timeline-subtitle">Savitribai Phule Pune University</div>
+                    <p>Graduated with strong foundation in computer systems, programming, and software development. Completed projects in data structures, algorithms, and system design.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <div class="timeline-date">December 2022 - August 2024</div>
+                    <div class="timeline-title">AI/ML Intern</div>
+                    <div class="timeline-subtitle">ScriptEdge Pvt. Ltd.</div>
+                    <p>Contributed to developing scalable software solutions, statistical model and worked with cross-functional teams, and gained hands-on experience in modern development practices. Implemented features using industry-standard tools and frameworks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills">
+        <h2 class="section-title">Technical Skills</h2>
+        <div class="skills-grid">
+            <div class="skill-category">
+                <h3>Programming Languages</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">SQL</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Frameworks & Libraries</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">LangChain</span>
+                    <span class="skill-tag">LangGraph</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Pandas & NumPy</span>
+                    <span class="skill-tag">Scikit-learn</span>
+                </div>
+            </div>
+            <div class="skill-category">
+                <h3>Tools & Technologies</h3>
+                <div class="skill-tags">
+                    <span class="skill-tag">Linux</span>
+                    <span class="skill-tag">VS Code</span>
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">Docker</span>
+                    <span class="skill-tag">Jupyter</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card" onclick="openModal('project1')">
+                <div class="project-image">🤖</div>
+                <div class="project-content">
+                    <h3 class="project-title">QwInSight: Qwen3 Powered ChatBot</h3>
+                    <p class="project-de<script>ion">Powerful query platform that leverages the capabilities of the Qwen3 models to interact with PDF documents.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">TensorFlow</span>
+                        <span class="tech-tag">NLP</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="project-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('project2')">
+                <div class="project-image">📊</div>
+                <div class="project-content">
+                    <h3 class="project-title">Movie Recommendation System</h3>
+                    <p class="project-description">This project is a hybrid movie recommendation system inspired by Netflix's architecture.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Pandas</span>
+                        <span class="tech-tag">Plotly</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="project-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="project-card" onclick="openModal('project3')">
+                <div class="project-image">🔮</div>
+                <div class="project-content">
+                    <h3 class="project-title">Traffic Sign Detection & Classification</h3>
+                    <p class="project-description">This project demonstrates how to train a custom object detection model and perform inference on a video file to detect traffic signs.</p>
+                    <div class="project-tech">
+                        <span class="tech-tag">Python</span>
+                        <span class="tech-tag">Scikit-learn</span>
+                        <span class="tech-tag">NumPy</span>
+                    </div>
+                    <div class="project-links">
+                        <a class="project-link">View Details</a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="contact-content">
+            <p>I'm always interested in discussing new opportunities, collaborating on projects, or connecting with fellow developers and researchers.</p>
+            <div class="contact-links">
+                <a href="mailto:jd849@njit.edu" class="contact-link">📧 Email</a>
+                <a href="https://www.linkedin.com/in/jaysheel-dodia/" class="contact-link">💼 LinkedIn</a>
+                <a href="https://github.com/jaysheeldodia/" class="contact-link">🔗 GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Modal -->
+    <div id="projectModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close" onclick="closeModal()">&times;</button>
+            <div id="modalBody">
+                <!-- Modal content will be dynamically inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.body.classList.add('dark-mode');
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+            nav.style.background = getComputedStyle(document.body).getPropertyValue('--background-card');
+            nav.style.boxShadow = '0 4px 25px var(--shadow-medium)';
+        } else {
+            nav.style.background = getComputedStyle(document.body).getPropertyValue('--background-light');
+            nav.style.boxShadow = '0 2px 20px var(--shadow-light)';
+        }
+        // Modal functionality
+        const projectDetails = {
+            project1: {
+                title: "QwInSight",
+                fullDescription: `A comprehensive PDF Question-Answering system that combines Retrieval-Augmented Generation (RAG) with Qwen language models, cloud storage integration, and multilingual support. Upload PDFs from local storage, Google Drive, or Dropbox, and ask intelligent questions with context-aware, accurate answers.
+                
+                Key features include:
+                • Advanced Language Models
+                • Cloud Storage Integration
+                • Multilingual Support
+                • Retrieval-Augmented Generation (RAG)
+                • General Purpose Chat
+                • Professional User Interface
+                
+                The system was built using Python with LangChain and HuggingFace for the machine learning components, incorporating transformer models for better language understanding. The chatbot demonstrates proficiency in various domains and can be easily customized for specific use cases.`,
+                technologies: ["Python", "HuggingFace", "LangChain", "Qwen3", "Multi-Model"],
+                github: "https://github.com/jaysheeldodia/QwInSight",
+            },
+            project2: {
+                title: "Netflix-Style Movie Recommendation System",
+                fullDescription: `This project is a hybrid movie recommendation system inspired by Netflix's architecture. It combines collaborative filtering (SVD) and content-based filtering (TF-IDF + cosine similarity) to deliver personalized movie suggestions based on user preferences and viewing history.
+                
+                Features include:
+                • Hybrid Recommendation Engine (Collaborative + Content-Based)
+                • Recommend movies similar to what you liked
+                • Trained using MovieLens 1M dataset
+                • Streamlit web app for interactive exploration
+                • SVD-based collaborative filtering via Surprise
+                • TF-IDF content filtering using movie titles & genres
+
+                
+                Built with Python backend using Pandas for data manipulation and Surprise for statistical modeling. The platform can handle large datasets efficiently and provides exportable models.`,
+                technologies: ["Python", "Pandas", "Statistics", "Scitkit-Learn", "Streamlit", "Surprise"],
+                github: "https://github.com/jaysheeldodia/personalized-movie-recommendation",
+            },
+            project3: {
+                title: "Real-Time Traffic Sign Detection using YOLOv5",
+                fullDescription: `Welcome to the repository for a real-time traffic sign detection system powered by YOLOv5. This project demonstrates how to train a custom object detection model and perform inference on a video file to detect traffic signs.
+                
+                Project highlights:
+                • Advanced object detection
+                • Available from light-weight to heavy-weight models
+                • Hyperparameter tuning and model optimization
+                • Highly Accurate
+                • Few Shot Learning
+                • Production-ready deployment pipeline
+                
+                The models achieved high accuracy rates and were optimized for both performance and interpretability. Special attention was paid to handling imbalanced datasets and ensuring robust performance across different data distributions.`,
+                technologies: ["Python", "Scikit-learn", "NumPy", "Pandas", "YOLOv5", "Model Optimization", "Object Detection", "IOT"],
+                github: "https://github.com/jaysheeldodia/real-time-traffic-sign-classification",
+            },
+        };
+
+        function openModal(projectId) {
+            const modal = document.getElementById('projectModal');
+            const modalBody = document.getElementById('modalBody');
+            const project = projectDetails[projectId];
+            
+            modalBody.innerHTML = `
+                <h2 style="color: var(--rich-black); margin-bottom: 1rem; font-weight: 600;">${project.title}</h2>
+                <div style="color: var(--oxford-blue); line-height: 1.8; margin-bottom: 2rem; white-space: pre-line;">
+                    ${project.fullDescription}
+                </div>
+                <div style="margin-bottom: 2rem;">
+                    <h3 style="color: var(--rich-black); margin-bottom: 1rem; font-weight: 600;">Technologies Used:</h3>
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+                        ${project.technologies.map(tech => 
+                            `<span style="background: var(--yinmn-blue); color: var(--platinum); padding: 0.3rem 0.8rem; border-radius: 15px; font-size: 0.8rem; font-weight: 500;">${tech}</span>`
+                        ).join('')}
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <a href="${project.github}" style="color: var(--platinum); text-decoration: none; font-weight: 600; padding: 0.8rem 1.5rem; background: linear-gradient(45deg, var(--yinmn-blue), var(--silver-lake-blue)); border-radius: 8px; transition: all 0.3s ease;" 
+                       onmouseover="this.style.fontWeight='700'; this.style.transform='translateY(-2px)'" 
+                       onmouseout="this.style.fontWeight='600'; this.style.transform='translateY(0)'">
+                        GitHub Repository
+                    </a>
+                </div>
+            `;
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('projectModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('projectModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'var(--background-card)';
+                nav.style.boxShadow = '0 4px 25px var(--shadow-medium)';
+            } else {
+                nav.style.background = 'var(--background-light)';
+                nav.style.boxShadow = '0 2px 20px var(--shadow-light)';
+            }
+        });
+
+
+        // Add intersection observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for scroll animations
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(30px)';
+            section.style.transition = 'all 0.6s ease';
+            observer.observe(section);
+        });
+
+        // Hero section is always visible
+        document.querySelector('.hero').style.opacity = '1';
+        document.querySelector('.hero').style.transform = 'translateY(0)';
+
+        document.getElementById('darkModeToggle').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.body.classList.toggle('dark-mode');
+            
+            // Immediately update navbar background based on scroll position
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = getComputedStyle(document.body).getPropertyValue('--background-card');
+                nav.style.boxShadow = '0 4px 25px var(--shadow-medium)';
+            } else {
+                nav.style.background = getComputedStyle(document.body).getPropertyValue('--background-light');
+                nav.style.boxShadow = '0 2px 20px var(--shadow-light)';
+            }
+        });
+
+
+    </script>
+</body>
+</html>

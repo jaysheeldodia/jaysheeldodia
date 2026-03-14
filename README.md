@@ -1,14 +1,14 @@
-## Hello everyone! 
-<h1 align="center">I'm Jaysheel Dodia</h1>
+<h1 align="center">Jaysheel Dodia</h1>
 
-<p align="left"> <img src="https://komarev.com/ghpvc/?username=jaysheeldodia" alt="jaysheeldodia" /> </p>
+Hi, I am Jaysheel Dodia. I am pursuing my Master's Degree in Computer and Information Sciences. I enjoy engineering applications and developing them. Engineering the products interests me more than just developing it, because the fun is always in doing something that is challenging and tough to do. Engineering your way into creating a robust, scalable and inexpensive product is more difficult than just coding or developing it.
+
 <br />
 
-- 💻 **Graduate Computer Science Student**
-- 🌱 Studying AI/ML with previous experience in **MERN Stack Apps**
+- 💻 **Studying Computer Science and Open for Opportunities**
+- 🌱 Developing AI and Machine Learning products
 - 👨‍💻 All of my projects are available at [https://github.com/jaysheeldodia](https://github.com/jaysheeldodia)
-- 💬 Ask me about **GenAI, Machine Learning, Deep Learning, Scripting, Open Source or Engineering overall**
-- ⚡ Fun fact **Loves sports. Lets talk about football and basketball!**
+- 💬 Ask me about **GenAI, Machine Learning, Deep Learning, C++, Scripting, Open Source or Engineering overall**
+
 
 <br/>
 

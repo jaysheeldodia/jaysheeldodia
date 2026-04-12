@@ -12,13 +12,6 @@ Hi, I am Jaysheel Dodia. I am pursuing my Master's Degree in Computer and Inform
 
 <br/>
 
-<a href="https://github.com/jaysheeldodia">
-  <img height="180em" src="https://github-readme-stats.vercel.app/api?username=jaysheeldodia&theme=buefy&show_icons=true" />
-  <img height="180em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=jaysheeldodia&theme=buefy&layout=compact" />
-</a>
-
-<br/>
-
 ## Connect with me  
 
 <a href="https://www.linkedin.com/in/jaysheel-dodia/" target="_blank">
